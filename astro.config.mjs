@@ -11,6 +11,8 @@ export default defineConfig({
     locales: ['es', 'en'],
     routing: {
       prefixDefaultLocale: false
-    }
+    },
+    site: 'https://DiegoMaes17.github.io',
+    base: '/astro-portafolio',
   }
 });
