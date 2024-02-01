@@ -14,7 +14,7 @@ sessionStorage.setItem('scrollPos',window.pageYOffset);
      localStorage.setItem('language','esp')
       esp.className = 'Esp seletect';
       eng.className = 'Eng none';
-      window.location.href= './'
+      window.location.href= '../'
     }
    });
 
