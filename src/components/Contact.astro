@@ -1,0 +1,33 @@
+---
+import  ACref from "./ACref.astro"
+import IconoGIT from "./iconos/IconoGIT.astro"
+import LinkedInIcon from "./iconos/LinkedInIcon.astro"
+import EmailIcon from "./iconos/MailIcon.astro"
+
+import { getI18N } from '../i18n/'
+const {currentLocale = "es"} = Astro
+const i18n = getI18N(Astro)
+
+---
+<script src="../components/Copy.js"></script>
+<div class=" w-32 flex flex-row mb-2 text-left mx-auto">
+    <div class="self-center flex-1 p-4 mt-14">
+        <h3 class="font-bold text-center text-2xl drop-shadow-per">{i18n.Top["Navbar-item-4"]}</h3>
+        <div class="pt-2">
+            <ul class="drop-shadow-per">
+                <li>
+                    <ACref href="https://github.com/DiegoMaes17"> <IconoGIT class="drop-shadow-indigo-shadow"/>Github</ACref>
+                </li>
+                <li>
+                    <ACref><LinkedInIcon class="w-5 drop-shadow-blue-shadow-smooth"/>LinkedIn</ACref>
+                </li>
+                <li>
+                    <ACref><EmailIcon/><button class="w-full h-full" id="BtnEmail">Email</button></ACref>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+ 
+ 

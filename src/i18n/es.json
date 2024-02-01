@@ -1,0 +1,33 @@
+{
+    "Top":{
+    "Page-title":"Diego Portafolio",
+    "Page-descripcion":"Portafolio web de Diego Madrid elaborado con Javascript, Astro y TailwindCSS",
+    "Navbar-item-1":"Sobre mi",
+    "Navbar-item-2": "Tecnologias",
+    "Navbar-item-3": "Proyectos",
+    "Navbar-item-4": "Contacto",
+    "Frase-1": "Tu sueña, yo codifico",
+    "Frase-2": "Desarrollador Front-End",
+
+    "Descripcion-1":"Soy un joven entusiasta de la tecnologia, con el suficiente potencial de crear, desarrollar y perfeccionar software.",
+    "Descripcion-2": "El unico problema real es aquel que no queremos solucionar.",
+
+    "Tech":"Tecnologias que manejo",
+    "Tech-2": "Tecnologias en aprendizaje",
+    "Navbar-Hastag-1":"Sobre mi",
+    "Navbar-Hastag-2":"Tecnologias",
+    "Navbar-Hastag-3":"Proyectos",
+    "Copy":"Copiado en el portapapeles"
+
+        
+    },
+    "Proyecto1":{
+        "title":"Landing page para Colegio",
+        "Descripcion":"Proyecto creado para pasantias, el cual tiene como fin el compartir informacion de la institución."
+    },
+    "Proyecto2":{
+        "title":"Astro landing page",
+        "Descripcion":"Proyecto creado con el fin de comprender y practicar el framework Astro"
+    }
+
+}

@@ -1,0 +1,528 @@
+---
+import { ViewTransitions } from "astro:transitions";
+
+interface Props{
+  title?:string
+  description?:string
+}
+
+const {title,description}= Astro.props
+const {currentLocale}= Astro
+---
+
+<!doctype html>
+<html lang={currentLocale} >
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description}>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <ViewTransitions/>
+    <title>{title}</title>
+  </head>
+  <body class="bg-gray-950 text-white">
+    <div class="night">
+      <div class="start"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+    </div>
+    <div class="fixed-night">
+      <div class="start"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+    </div>
+    <div class="Language">
+      <ul>
+        <p class="text-lg ml-1 mb-7 font-semibold relative"><span class="Esp">Español</span><span class="Eng">English</span></p>
+        <li>
+          <label class="switch">
+            <input type="checkbox" id="langSwitch" class="check" />
+            <span class="slider"></span>
+          </label>
+      </ul>
+    </div>
+    <section class=" h-full mx-auto font-Roboto " id="sec">
+      <slot />
+    </section>
+  </body>
+  <script src="../components/LanguageSwitch.js"></script>
+  <style is:global>
+    :root {
+      color-scheme: Light dark;
+    }
+
+    html {
+      font-family: "Roboto", sans-serif;
+    }
+
+    #sec {
+      max-width: 640px;
+    }
+
+    body {
+      max-height: 100vh;
+      max-width: 100%;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+
+  <style>
+    .Esp{
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .Eng{
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: transparent;
+    }
+    .Language {
+      margin-top: 20px;
+      margin-right: 50px;
+      position: fixed;
+      width: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    right: 0;
+    }
+
+    .seletect{
+      color:white;
+    }
+    .none{
+    color: transparent;
+    }
+
+
+    .switch input {
+      display: none;
+    }
+
+    .switch {
+      display: inline-block;
+      width: 60px; 
+      height: 30px; 
+      margin: 4px;
+      transform: translateY(50%);
+      position: relative;
+      transform: scale(0.7);
+    }
+
+    .slider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-radius: 30px;
+      box-shadow:
+        0 0 0 2px #777,
+        0 0 4px #777;
+      cursor: pointer;
+      border: 4px solid transparent;
+      overflow: hidden;
+      transition: 0.2s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 100%;
+      background-color: #777;
+      border-radius: 30px;
+      transform: translateX(-30px); 
+      transition: 0.2s;
+    }
+
+    input:checked + .slider:before{
+      transform: translateX(30px);
+      background-color: #059669;
+    }
+
+
+    input:checked + .slider {
+      box-shadow:
+        0 0 0 2px #059669,
+        0 0 8px #059669;
+    }
+
+    .night {
+      position: absolute;
+      width: 648px;
+      height: 100%;
+      transform: rotateZ(90deg);
+      z-index: -1;
+    }
+
+
+
+    .fixed-night {
+      display: none;
+      position: fixed;
+      width: 648px;
+      height: 100%;
+      transform: rotateZ(90deg);
+      z-index: -1;
+      margin-top: 350px;
+    }
+
+    .fixed-night .star {
+      background: linear-gradient(-45deg, #ffffff, rgba(255, 255, 255, 0));
+      animation: none;
+    }
+    .star {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      height: 4px;
+      background: linear-gradient(-45deg, #5f91ff, rgba(0, 0, 255, 0));
+      border-radius: 999px;
+      filter: drop-shadow(0px 0px 15px rgb(34, 211, 238));
+      animation:
+        tail 3s ease-in-out infinite,
+        falling 3s ease-in-out infinite;
+    }
+
+    .brightness {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      height: 4px;
+      background: white;
+      border-radius: 999px;
+      opacity: 0;
+      transition: opacity 1s;
+    }
+
+    @keyframes tail {
+      0% {
+        width: 0;
+      }
+      30% {
+        width: 100px;
+      }
+      100% {
+        width: 0;
+      }
+    }
+
+    @keyframes falling {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(300px);
+      }
+    }
+
+    .fixed-night .star::before,
+    .fixed-night .star::after {
+      content: "";
+      position: absolute;
+      top: calc(50% - 2px);
+      right: 0;
+      height: 4px;
+      background: linear-gradient(
+        -45deg,
+        rgba(0, 0, 255, 0),
+        white,
+        rgba(0, 0, 255, 0)
+      );
+      border-radius: 100%;
+      transform: translateX(50%) rotateZ(45deg);
+      animation: shining 3s ease-in-out infinite;
+    }
+
+    .fixed-night .star::after {
+      transform: translateX(50%) rotateZ(-45deg);
+    }
+
+    .star::before,
+    .star::after {
+      content: "";
+      position: absolute;
+      top: calc(50% - 2px);
+      right: 0;
+      height: 4px;
+      background: linear-gradient(
+        -45deg,
+        rgba(0, 0, 255, 0),
+        #5f91ff,
+        rgba(0, 0, 255, 0)
+      );
+      border-radius: 100%;
+      transform: translateX(50%) rotateZ(45deg);
+      animation: shining 3s ease-in-out infinite;
+    }
+
+    @keyframes shining {
+      0% {
+        width: 0;
+      }
+      50% {
+        width: 30px;
+      }
+      100% {
+        width: 0;
+      }
+    }
+
+    .star::after {
+      transform: translateX(50%) rotateZ(-45deg);
+    }
+
+    .star:nth-child(1) {
+      top: calc(50% - 100px);
+      left: calc(50% - 250px);
+      animation-delay: 1s;
+    }
+
+    .star:nth-child(1)::before,
+    .star:nth-child(1)::after {
+      animation-delay: 1s;
+    }
+
+    .star:nth-child(2) {
+      top: calc(50% - 50px);
+      left: calc(50% - 200px);
+      animation-delay: 1.2s;
+    }
+
+    .star:nth-child(2)::before,
+    .star:nth-child(2)::after {
+      animation-delay: 1.2s;
+    }
+
+    .star:nth-child(3) {
+      top: calc(50% - 0px);
+      left: calc(50% - 150px);
+      animation-delay: 1.4s;
+    }
+
+    .star:nth-child(3)::before,
+    .star:nth-child(3)::after {
+      animation-delay: 1.4s;
+    }
+
+    .star:nth-child(4) {
+      top: calc(50% - -50px);
+      left: calc(50% - 200px);
+      animation-delay: 1.6s;
+    }
+
+    .star:nth-child(4)::before,
+    .star:nth-child(4)::after {
+      animation-delay: 1.6s;
+    }
+
+    .star:nth-child(5) {
+      top: calc(50% - -100px);
+      left: calc(50% - 250px);
+      animation-delay: 1.8s;
+    }
+
+    .star:nth-child(5)::before,
+    .star:nth-child(5)::after {
+      animation-delay: 1.8s;
+    }
+
+    .star:nth-child(6) {
+      top: calc(50% - 900px);
+      left: calc(50% - 250px);
+      animation-delay: 1.8s;
+    }
+
+    .star:nth-child(6)::before,
+    .star:nth-child(6)::after {
+      animation-delay: 1.8s;
+    }
+
+    .star:nth-child(7) {
+      top: calc(50% - 800px);
+      left: calc(50% - 150px);
+      animation-delay: 1.8s;
+    }
+
+    .star:nth-child(7)::before,
+    .star:nth-child(7)::after {
+      animation-delay: 1.8s;
+    }
+
+    .star:nth-child(8) {
+      top: calc(50% - 850px);
+      left: calc(50% - 200px);
+      animation-delay: 1.8s;
+    }
+
+    .star:nth-child(8)::before,
+    .star:nth-child(8)::after {
+      animation-delay: 1.8s;
+    }
+
+    .star:nth-child(9) {
+      top: calc(50% - 950px);
+      left: calc(50% - 150px);
+      animation-delay: 1.8s;
+    }
+
+    .star:nth-child(9)::before,
+    .star:nth-child(9)::after {
+      animation-delay: 1.8s;
+    }
+
+    @media screen and (max-width: 1280px) {
+      .fixed-night {
+        display: none;
+      }
+      .night {
+        position: absolute;
+        max-width: 340px;
+        transform: rotateZ(60deg);
+        z-index: -1;
+      }
+
+      .star:nth-child(6) {
+        display: none;
+      }
+
+      .star:nth-child(7) {
+        display: none;
+      }
+
+      .star:nth-child(8) {
+        display: none;
+      }
+
+      .star:nth-child(9) {
+        display: none;
+      }
+    }
+
+    @media screen and (max-width: 700px) {
+      .fixed-night {
+        display: none;
+      }
+
+      .star {
+        display: flex;
+        animation: none;
+      }
+
+      .Language{
+        margin-right: 30px;
+        padding-top: 570px;
+       
+      }
+
+      .night {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 200px;
+        position: absolute;
+        width: 300px;
+        height: 400px;
+        transform: rotateZ(90deg);
+      }
+
+      .star:nth-child(1) {
+        top: calc(50% - 0px);
+        left: calc(50% - 300px);
+        animation-delay: 1s;
+      }
+
+      .star:nth-child(1)::before,
+      .star:nth-child(1)::after {
+        animation-delay: 1s;
+      }
+
+      .star:nth-child(2) {
+        top: calc(50% - -100px);
+        left: calc(50% - 300px);
+        animation-delay: 1.2s;
+      }
+
+      .star:nth-child(2)::before,
+      .star:nth-child(2)::after {
+        animation-delay: 1.2s;
+      }
+
+      .star:nth-child(3) {
+        top: calc(50% - -50px);
+        left: calc(50% - 300px);
+        animation-delay: 1.4s;
+      }
+
+      .star:nth-child(3)::before,
+      .star:nth-child(3)::after {
+        animation-delay: 1.4s;
+      }
+
+      .star:nth-child(4) {
+        top: calc(50% - -0px);
+        left: calc(50% - 300px);
+        animation-delay: 1.6s;
+      }
+
+      .star:nth-child(4)::before,
+      .star:nth-child(4)::after {
+        animation-delay: 1.6s;
+      }
+
+      .star:nth-child(5) {
+        top: calc(50% - 50px);
+        left: calc(50% - 300px);
+        animation-delay: 1.8s;
+      }
+
+      .star:nth-child(5)::before,
+      .star:nth-child(5)::after {
+        animation-delay: 1.8s;
+      }
+
+      .star:nth-child(6) {
+        display: none;
+      }
+
+      .star:nth-child(7) {
+        display: none;
+      }
+
+      .star:nth-child(8) {
+        display: none;
+      }
+
+      .star:nth-child(9) {
+        display: none;
+      }
+    }
+  </style>
+</html>

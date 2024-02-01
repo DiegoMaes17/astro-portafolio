@@ -1,0 +1,16 @@
+---
+import { getI18N } from '../i18n/'
+const {currentLocale = "es"} = Astro
+const i18n = getI18N(Astro)
+---
+
+<section class="flex p-2 mx-auto max-w-md text-xl ">
+    <div class="flex mx-5">
+        <div class="text-left">
+            <p>{i18n.Top['Descripcion-1']}</p>
+            <p class="text-green-400 font-bold pt-2 drop-shadow-per ">
+               {i18n.Top['Descripcion-2']}
+            </p>
+        </div>
+    </div>
+</section>

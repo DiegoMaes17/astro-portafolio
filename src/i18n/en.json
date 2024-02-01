@@ -1,0 +1,30 @@
+{
+    "Top":{
+    "Page-title":"Diego Portfolio",
+    "Page-descripcion":"Diego Madrid's web portfolio built with Javascript, Astro and TailwindCSS",
+    "Navbar-item-1":"About me",
+    "Navbar-item-2": "Technologies",
+    "Navbar-item-3": "Projects",
+    "Navbar-item-4": "Contact",
+    "Frase-1": "You dream, I code",
+    "Frase-2": "Front-end developer",
+
+    "Descripcion-1": "I am a young technology enthusiast, with enough potential to create, develop and improve software.",
+    "Descripcion-2": "The only real problem is the one we do not want to solve.",
+
+    "Tech":"Stack",
+    "Tech-2":"Technologies in learning",
+    "Navbar-Hastag-1":"About me",
+    "Navbar-Hastag-2":"Technologies",
+    "Navbar-Hastag-3":"Projects",
+    "Copy":"Copied to clipboard"
+},
+"Proyecto1":{
+    "title":"Landing for colegio",
+    "Descripcion":"Project created for internships, which aims to share information about the institution."
+},
+"Proyecto2":{
+    "title":"Astro landing page",
+    "Descripcion":"Project created in order to understand and practice the Astro framework."
+}
+ }

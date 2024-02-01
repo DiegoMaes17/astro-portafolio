@@ -1,0 +1,113 @@
+---
+
+
+import SocialLinks from '../components/Social.astro'
+
+import LinkedInIcon from './iconos/LinkedInIcon.astro'
+import IconoGIT from './iconos/IconoGIT.astro'
+import Button from "./ButtonCopy.jsx"
+
+
+import { getI18N } from '../i18n/'
+const {currentLocale = "es"} = Astro
+const i18n = getI18N(Astro)
+const AbaoutUrl= `#${i18n.Top['Navbar-Hastag-1']}`;
+const Techurl = `#${i18n.Top['Navbar-Hastag-2']}`;
+const Projecturl = `#${i18n.Top['Navbar-Hastag-3']}`;
+const copyText = String(i18n.Top['Copy']);
+---
+
+<style>
+    nav a::before{
+    content: "";
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    border-top:2px solid white;
+    border-bottom: 2px solid white;
+    transform: scaleY(2);
+    opacity: 0;
+    transition: .3s;
+    color:Black;
+}
+
+nav a::after{
+    content:'';
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color:White;
+    transform: scale(0);
+    opacity: 0;
+    transition: .3s;
+    z-index: -1;
+}
+
+nav a:hover::before{
+    opacity:1;
+    transform: scaleY(1);
+}
+nav a:hover::after{
+    transform:scaleY(1);
+    opacity: 1;
+    
+}
+
+nav a:hover{
+    color: black;
+    transition: all .3s  ease-in-out;  
+}
+
+:root {
+ --switch-width: 50px;
+ --switch-height: 30px;
+ --slider-color: #777;
+ --slider-active-color: limeGreen;
+ --switch-position: 50%;
+}
+
+
+</style>
+
+<header>
+    <nav class="flex p-6 justify-between box-border items-center font-bold ">
+        <a class="relative p-1" href={AbaoutUrl}>{i18n.Top['Navbar-item-1']}</a>
+        <a class="relative p-1" href={Techurl}>{i18n.Top['Navbar-item-2']}</a>
+        <a class="relative p-1" href={Projecturl}>{i18n.Top['Navbar-item-3']}</a>
+        <a class="relative p-1" href={AbaoutUrl}>{i18n.Top['Navbar-item-4']}</a>
+    </nav>
+
+    <div class="flex flex-row mb-2 text-left mx-auto" id={i18n.Top['Navbar-Hastag-1']}>
+        <div class="self-center flex-1 p-4 mt-14">
+            <h2 class="font-bold text-3xl my-4 pb-2">{i18n.Top['Frase-1']}</h2>
+            <p class="my-4 text-3xl"> <span class="text-deg-m drop-shadow-per">&lt;/&gt</span> Diego Madrid <span class="text-transparent bg-clip-text bg-[linear-gradient(to_right,theme(colors.deg-c),theme(colors.deg-m))] bg-[lenghth:200%_auto]">{i18n.Top['Frase-2']}</span></p>
+
+            <div class="flex gap-x-2">
+            <ul class="flex">
+                <li class="">
+                    <SocialLinks href="https://www.linkedin.com/in/diego-madrid-02a735269/">
+                        <LinkedInIcon class="w-5 drop-shadow-blue-shadow-smooth hover:scale-110 hover:transition-all"/>
+                        LinkedIn
+                    </SocialLinks>
+                </li>
+                <li class="ml-2">
+                    <SocialLinks href="https://github.com/DiegoMaes17">
+                        <IconoGIT class="w-5  drop-shadow-indigo-shadow hover:scale-110 hover:transition-all"/>
+                        GitHub
+                    </SocialLinks>
+                </li>
+       
+            </ul>
+            </div>
+            
+        </div>
+        <div class="flex-1">
+            <img class="rounded-full w-52 h-30 mt-20" src="../../public/pexels-pixabay-57416.jpg" alt="photo">
+        </div>
+    </div>
+</header>
+

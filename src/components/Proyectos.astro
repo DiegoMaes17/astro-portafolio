@@ -1,0 +1,115 @@
+---
+import TailwindIcon from './iconos/Tailwind.astro';
+
+import HTMLIcon from './iconos/HTMLIcon.astro';
+
+import ASTROIcon from './iconos/ASTROIcon.astro';
+
+import GitIcon from './iconos/IconoGIT.astro'
+
+import LinkIcon from './iconos/LINK.astro'
+
+import ReactIcon from './iconos/ReactIcon.astro'
+
+import CSSicon from './iconos/CSSicon.astro';
+
+import JsIcon from './iconos/JsIcon.astro';
+
+import { getI18N } from '../i18n/'
+import { Image } from 'astro:assets';
+const {currentLocale = "es"} = Astro
+const i18n = getI18N(Astro)
+
+const TAGS = {
+  TAILWIND: {
+    name: "Tailwind CSS",
+    class: "bg-[#003159] text-white",
+    icon: TailwindIcon,
+  },
+  HTML: {
+    name: "HTML",
+    class: 'bg-[#e44c267a] text-white ',
+    icon: HTMLIcon,
+  },
+  ASTRO:{
+    name: "Astro",
+    class: "bg-[linear-gradient(90deg,rgba(240,64,101,0.7)18%,rgba(245,73,69,0.7)52%,rgba(255,86,5,0.7)100%)] text-white",
+    icon: ASTROIcon,
+  },
+  React:{
+    name: "React",
+    class:'bg-[#1398c485] text-white',
+    icon: ReactIcon,
+  },
+  
+  CSS: {
+    name: "CSS",
+    class: 'bg-[#35a2d072] text-white',
+    icon:CSSicon,
+  },
+
+  JS:{
+    name: "JavaScript",
+    class:'bg-[#e2cf5194] text-white',
+    icon:JsIcon,
+  }
+}
+
+const PROJECTS = [
+  {
+    title: i18n.Proyecto1.title,
+    descripcion: i18n.Proyecto1.Descripcion,
+    link:'',
+    image: "../../public/colelanding.webp",
+    tags: [TAGS.HTML,TAGS.JS, TAGS.CSS],
+  },
+  {
+    title: i18n.Proyecto2.title,
+    descripcion: i18n.Proyecto2.Descripcion,
+    github: 'https://github.com/DiegoMaes17/astro-landing',
+    image: "../../public/astrolanding.webp",
+    tags: [TAGS.ASTRO,TAGS.TAILWIND,TAGS.React],
+  }
+];
+---
+
+<section class="pl-2">
+  {
+    PROJECTS.map(({ title, descripcion, tags, image,github,link }) => (
+      <div class="mt-4 mb-5" id={i18n.Top['Navbar-Hastag-3']}>
+        <h3 class="text-xl font-semibold mb-2 text-teal-300 drop-shadow-shadow-teal-500">{title}</h3>
+        <p class="text-lg mb-4 text-pretty">{descripcion}</p>
+        <ul class="flex gap-x-2 flew-row mb-2">
+          {tags.map((tags) => (
+            <li>
+                <span  class={`flex gap-x-2 rounded-full text-xs ${tags.class} py-1 px-2 border border-white/10`}
+            >
+                 <tags.icon class="size-4"/>
+                 {tags.name}
+                    </span>
+                </li>
+          ))}
+        </ul>
+        <img
+          class="rounded shadow 2xl shadow-white w-1/2 flex mx-auto mt-4"
+          src={image}
+          alt="Foto del proyecto"
+        />
+        <ul class="flex gap-x-2 flew-row mb-5">
+
+          <li class="flex gap-x-2-rounded-full text-xs pt-2 bt-2">
+            {github !== undefined && link !==null && link!= ''?(
+            <a href={github} target="_blank"><span class="size-4">
+            <GitIcon/></span></a>):null }
+            </li>
+
+          <li class="flex gap-x-2-rounded-full text-xs pt-2 bt-2">
+            {link !== undefined && link !== null && link!== ''?(
+            <a href={link} target="_blank"><span class="size-4">
+            <LinkIcon/></span></a>): null} 
+          </li>
+        </ul>
+      </div>
+    ))
+  }
+</section>
